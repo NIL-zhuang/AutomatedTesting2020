@@ -2,9 +2,10 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
 # C extensions
 *.so
+Data/*
+Models/*
 
 # Distribution / packaging
 .Python
