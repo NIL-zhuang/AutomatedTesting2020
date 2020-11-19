@@ -66,10 +66,10 @@ gen_train_X, gen_train_y = train_iter.next()
 gen_test_X, gen_test_y = test_iter.next()
 model_path = "/home/nil/Documents/code/AutomatedTesting2020/Models/MNIST/dnn_without_dropout.hdf5"
 model = keras.models.load_model(model_path)
-model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 model.fit(gen_train_X.reshape(-1, 784), gen_train_y, batch_size=32, epochs=70, shuffle=True,
-          validation_data=(X_test.reshape(-1, 784), y_test),
-          callbacks=[EarlyStopping(monitor='val_loss', patience=5), TensorBoard(log_dir='./logs')])
+          callbacks=[EarlyStopping(monitor='loss', patience=5), TensorBoard(log_dir='./logs')])
 model.save("my_dnn_final_2.hdf5")
 print(model.evaluate(gen_test_X.reshape(-1, 784), gen_test_y, verbose=1))
 print(model.evaluate(X_test.reshape(-1, 784), y_test, verbose=1))
