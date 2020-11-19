@@ -8,11 +8,41 @@
 
 ## 算法释义
 
+### MNIST
+
+### CIFAR100
+
 ## 所用第三方库及版本
+
+1. python 3.8.6
+2. tensorflow 3.2.1
+3. keras 2.2.4
+4. opencv 4.5.0-1
 
 ## 程序入口
 
 ## 程序结构
+
+```text
+.
+├── Data
+├── Demo
+├── Models
+│   ├── CIFAR100
+│   └── MNIST
+├── Project
+│   ├── CIFAR100
+│   ├── MINIST
+├── README.md
+└── Report
+    └── Report.md
+```
+
+* Data下存放的是扩增后的数据集
+* Demo存放录制的视频
+* Models存放助教给的模型
+* Poject下存放对应数据集的扩增代码和验证代码
+* Report下存放报告
 
 ## reference
 
