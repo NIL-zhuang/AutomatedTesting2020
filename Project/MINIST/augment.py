@@ -31,8 +31,8 @@ def preprocess(img: np.ndarray) -> np.ndarray:
     """
     @param img 一个秩为3个Numpy张量，输出同尺寸
     """
-    # img = pepper_noise(img)
-    img = wrap(img)
+    img = pepper_noise(img)
+    # img = wrap(img)
     # img = gaussian_filter(img, sigma=2)
     return img
 
@@ -71,19 +71,26 @@ datagen = ImageDataGenerator(
     featurewise_center=True,
     featurewise_std_normalization=False,
     # rotation_range=15,
-    # width_shift_range=0.15,
-    # height_shift_range=0.15,
-    preprocessing_function=preprocess,
+    width_shift_range=0.15,
+    height_shift_range=0.15,
+    # preprocessing_function=preprocess,
     fill_mode='nearest',
 )
 # fit parameters from data
 datagen.fit(X_test)
-# show_img()
 
 testgen = ImageDataGenerator(
     featurewise_center=True,
     featurewise_std_normalization=False,
 )
+
+
+def generate_img():
+    for i in range(50):
+        for batch in datagen.flow(X_test, y_test, batch_size=1,
+                                  save_to_dir="Data/MNIST/Scale",
+                                  save_prefix="mnist", save_format='png'):
+            pass
 
 
 def generate_train():
@@ -122,6 +129,3 @@ def generate_test():
             score = model.evaluate(gen_test_X.reshape(-1, 784), gen_test_y, verbose=0)
         train_RES.append([model_name, str(round(score[1], 4))])
     print('\n'.join(sorted([' '.join(s) for s in train_RES])))
-
-
-generate_test()
