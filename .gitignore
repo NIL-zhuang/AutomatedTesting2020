@@ -4,7 +4,7 @@ __pycache__/
 *$py.class
 # C extensions
 *.so
-Data/*
+# Data/*
 Models/MNIST/*
 Models/CIFAR100/*
 logs/*
